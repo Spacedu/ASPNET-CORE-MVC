@@ -30,6 +30,16 @@ app.Run(async (HttpContext context) => {
 
             var json = JsonSerializer.Serialize(clients);
             await context.Response.WriteAsync(json);
+        } else if (context.Request.Path.StartsWithSegments("/contact"))
+        {
+            context.Response.Headers.ContentType = "text/html";
+
+            await context.Response.WriteAsync("<h1>Contact page</h1>with form!");
+        }
+        else
+        {
+            context.Response.StatusCode = 404;
+            await context.Response.WriteAsync("Page not found!!! :(");
         }
     }
     else if(context.Request.Method == "POST")
@@ -73,20 +83,7 @@ app.Run(async (HttpContext context) => {
 
             clients.Remove(clients[sequence]);
         }
-    }
-
-
-    /*
-    else if (context.Request.Path.StartsWithSegments("/contact"))
-    {
-        context.Response.Headers.ContentType = "text/html";
-
-        await context.Response.WriteAsync("<h1>Contact page</h1>with form!");
-    }
-    else
-    {
-        await context.Response.WriteAsync("Site under construction");
-    }*/
+    } 
 });
 
 app.Run();
