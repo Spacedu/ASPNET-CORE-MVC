@@ -34,7 +34,17 @@ app.Run(async (HttpContext context) => {
     }
     else if(context.Request.Method == "POST")
     {
+        if (context.Request.Path.StartsWithSegments("/api/clients"))
+        {
+            // IO
+            using (var reader = new StreamReader(context.Request.Body))
+            {
+                var body = await reader.ReadToEndAsync();
 
+                Client client = JsonSerializer.Deserialize<Client>(body)!;
+                clients.Add(client);
+            }
+        }
     }else if (context.Request.Method == "PUT")
     {
 

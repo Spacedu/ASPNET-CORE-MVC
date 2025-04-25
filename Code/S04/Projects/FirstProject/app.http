@@ -1,3 +1,13 @@
 # For more info on HTTP files go to https://aka.ms/vs/httpfile
 # Postman | Insomnia
 
+### Get list of clients
+GET http://localhost:5173/api/clients
+
+### Register a new client
+POST http://localhost:5173/api/clients
+Content-Type: application/json
+
+{
+    "Name": "Philipe"
+}
