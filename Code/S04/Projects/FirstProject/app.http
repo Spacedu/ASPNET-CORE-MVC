@@ -11,3 +11,11 @@ Content-Type: application/json
 {
     "Name": "Philipe"
 }
+
+### Update a client
+PUT http://localhost:5173/api/clients/3
+Content-Type: application/json
+
+{
+    "Name": "Mary Antonieta"
+}

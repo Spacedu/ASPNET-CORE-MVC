@@ -47,8 +47,24 @@ app.Run(async (HttpContext context) => {
         }
     }else if (context.Request.Method == "PUT")
     {
+        // /api/clients/3
+        if (context.Request.Path.StartsWithSegments("/api/clients"))
+        {
+            var sequenceFromUrl = context.Request.Path.Value!.Replace("/api/clients/", string.Empty);
+            int sequence = int.Parse(sequenceFromUrl) - 1;
 
-    }else if (context.Request.Method == "DELETE")
+            clients.Remove(clients[sequence]);
+            using (var reader = new StreamReader(context.Request.Body))
+            {
+                var body = await reader.ReadToEndAsync();
+
+                Client client = JsonSerializer.Deserialize<Client>(body)!;
+                clients.Insert(sequence, client);
+            }
+
+        }
+    }
+    else if (context.Request.Method == "DELETE")
     {
 
     }
