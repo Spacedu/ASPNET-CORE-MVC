@@ -9,15 +9,43 @@ clients.Add(new Client { Name = "John" });
 clients.Add(new Client { Name = "Joseph" });
 clients.Add(new Client { Name = "Mary" });
 
+/*
+ * HTML: GET (Tag: a), POST (Form)
+ * JS: GET, POST, PUT, PATCH, DELETE
+ * API:
+ * - RESTful - HTTP: GET, POST, PUT, PATCH, DELETE
+ * - GraphQL
+ * - gRPC
+ * 
+ * Postman* | Insomnia | VS(http)
+ */
+
 app.Run(async (HttpContext context) => {
-    if (context.Request.Path.StartsWithSegments("/api/clients"))
+    if(context.Request.Method == "GET")
     {
-        context.Response.Headers.ContentType = "application/json";
+        //Browser
+        if (context.Request.Path.StartsWithSegments("/api/clients"))
+        {
+            context.Response.Headers.ContentType = "application/json";
 
-        var json = JsonSerializer.Serialize(clients);
-        await context.Response.WriteAsync(json);
+            var json = JsonSerializer.Serialize(clients);
+            await context.Response.WriteAsync(json);
+        }
+    }
+    else if(context.Request.Method == "POST")
+    {
 
-    } else if (context.Request.Path.StartsWithSegments("/contact"))
+    }else if (context.Request.Method == "PUT")
+    {
+
+    }else if (context.Request.Method == "DELETE")
+    {
+
+    }
+
+
+    /*
+    else if (context.Request.Path.StartsWithSegments("/contact"))
     {
         context.Response.Headers.ContentType = "text/html";
 
@@ -26,7 +54,7 @@ app.Run(async (HttpContext context) => {
     else
     {
         await context.Response.WriteAsync("Site under construction");
-    }
+    }*/
 });
 
 app.Run();
