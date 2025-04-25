@@ -19,3 +19,6 @@ Content-Type: application/json
 {
     "Name": "Mary Antonieta"
 }
+
+### Delete a client
+DELETE http://localhost:5173/api/clients/2

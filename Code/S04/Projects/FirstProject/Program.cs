@@ -66,7 +66,13 @@ app.Run(async (HttpContext context) => {
     }
     else if (context.Request.Method == "DELETE")
     {
+        if (context.Request.Path.StartsWithSegments("/api/clients"))
+        {
+            var sequenceFromUrl = context.Request.Path.Value!.Replace("/api/clients/", string.Empty);
+            int sequence = int.Parse(sequenceFromUrl) - 1;
 
+            clients.Remove(clients[sequence]);
+        }
     }
 
 
