@@ -2,7 +2,6 @@
 
 namespace SecondProject.Controllers;
 
-
 [Route("News")]
 public class NewsController : Controller
 {
