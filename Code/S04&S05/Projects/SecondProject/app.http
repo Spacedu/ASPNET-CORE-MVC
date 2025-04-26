@@ -1,0 +1,7 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+
+### Add News
+POST https://localhost:7289/News/Add?author=Elias
+Content-Type: application/x-www-form-urlencoded
+
+title=xyz-title&message=xyz-message&author=Jhon
