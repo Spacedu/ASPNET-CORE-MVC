@@ -1,9 +1,11 @@
-﻿namespace SecondProject.Controllers;
+﻿using Microsoft.AspNetCore.Mvc;
 
-public class HomeController
+namespace SecondProject.Controllers;
+
+public class HomeController : Controller
 {
-    public string Index()
+    public IActionResult Index()
     {
-        return "Hello world! :)";
+        return View();
     }
 }
