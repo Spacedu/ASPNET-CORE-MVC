@@ -20,6 +20,24 @@ clients.Add(new Client { Name = "Mary" });
  * Postman* | Insomnia | VS(http)
  */
 
+// Authentication | JSON > XML | Cookie | Configuration(Routing) | Middleware(Logs, Message on Screen)
+
+//Middleware 1
+app.Use(async (HttpContext context, RequestDelegate next) =>
+{
+    await context.Response.WriteAsync("Middleware 1: Init");
+    await next(context);
+    await context.Response.WriteAsync("Middlware 1: Finish");
+});
+
+//Middleware 2
+app.Use(async (HttpContext context, RequestDelegate next) =>
+{
+    await context.Response.WriteAsync("Middleware 2: Init");
+    await next(context);
+    await context.Response.WriteAsync("Middlware 2: Finish");
+});
+
 app.Run(async (HttpContext context) => {
     if(context.Request.Method == "GET")
     {
@@ -38,7 +56,7 @@ app.Run(async (HttpContext context) => {
         }
         else
         {
-            context.Response.StatusCode = 404;
+            //context.Response.StatusCode = 404;
             await context.Response.WriteAsync("Page not found!!! :(");
         }
     }
