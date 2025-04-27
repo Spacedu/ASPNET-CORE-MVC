@@ -17,4 +17,14 @@ public class ResultTypeController : Controller
             Content = "This is content result"
         };
     }
+
+    [Route("Json")]
+    public IActionResult JsonResult()
+    {
+        var obj = new { title = "XYZ", content = "XYZ-Content" };
+
+        return Json(obj);
+
+        return new JsonResult(obj);
+    }
 }
