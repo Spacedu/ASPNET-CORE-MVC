@@ -57,4 +57,28 @@ public class ResultTypeController : Controller
         return View("View2");
         return new ViewResult { ContentType = "text/html", ViewName = "ViewResult" };
     }
+    
+    [Route("Redirect")]
+    public IActionResult RedirectResult()
+    {
+        return Redirect("https://www.google.com");
+        return new RedirectResult("https://www.google.com");
+    }
+    
+    [Route("Redirect-Local")]
+    public IActionResult RedirectLocalResult()
+    {
+        return LocalRedirect("/ResultType/View");
+        return new LocalRedirectResult("/ResultType/View");
+    }
+    
+    [Route("Redirect-Action")]
+    public IActionResult RedirectActionResult()
+    {
+        var controller = nameof(ResultTypeController).Replace("Controller", string.Empty);
+        var action = nameof(ContentResult).Replace("Result", string.Empty);
+
+        return RedirectToAction(action, controller, new { slug = "slug1" });
+        return new RedirectToActionResult("Json", "ResultType", new { slug = "slug1" });
+    }
 }
