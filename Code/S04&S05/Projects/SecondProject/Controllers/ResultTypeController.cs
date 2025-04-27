@@ -27,4 +27,21 @@ public class ResultTypeController : Controller
 
         return new JsonResult(obj);
     }
+
+    [Route("File-Virtual")]
+    public IActionResult FileVirtual()
+    {
+        //MIME-TYPE = Media Type
+        return new VirtualFileResult("Files/articles.pdf", "application/pdf");
+    }
+    [Route("File-Physical")]
+    public IActionResult FilePhysical()
+    {
+        return new PhysicalFileResult(@"C:\Users\elias\Downloads\article.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+    }
+    [Route("File-Content")]
+    {
+        byte[] fileInBytes = System.IO.File.ReadAllBytes(@"C:\Users\elias\Downloads\articles.pdf");
+        return new FileContentResult(fileInBytes, "application/pdf");
+    }
 }
