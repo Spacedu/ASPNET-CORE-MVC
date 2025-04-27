@@ -31,18 +31,23 @@ public class ResultTypeController : Controller
     [Route("File-Virtual")]
     public IActionResult FileVirtual()
     {
-        //MIME-TYPE = Media Type
+        return File("Files/articles.pdf", "application/pdf");
+
         return new VirtualFileResult("Files/articles.pdf", "application/pdf");
     }
     [Route("File-Physical")]
     public IActionResult FilePhysical()
     {
+        return PhysicalFile(@"C:\Users\elias\Downloads\article.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+
         return new PhysicalFileResult(@"C:\Users\elias\Downloads\article.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
     }
     [Route("File-Content")]
     public IActionResult FileContent()
     {
         byte[] fileInBytes = System.IO.File.ReadAllBytes(@"C:\Users\elias\Downloads\articles.pdf");
+
+        return File(fileInBytes, "application/pdf");
         return new FileContentResult(fileInBytes, "application/pdf");
     }
 }
