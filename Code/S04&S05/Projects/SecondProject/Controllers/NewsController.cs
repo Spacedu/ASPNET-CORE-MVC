@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SecondProject.Models;
 
 namespace SecondProject.Controllers;
 
@@ -19,14 +20,19 @@ public class NewsController : Controller
      * 
      * Form: title=xyz&message=xyz
      */
+    [HttpGet("Add")]
+    public IActionResult AddGet([FromQuery] News news)
+    {
+        return Ok();
+    }
     [HttpPost("Add")]
-    public IActionResult Add([FromQuery]string author, string title, string message)
+    public IActionResult AddPost([FromHeader] string authorization, [FromForm] News news)
     {
         return Ok();
     }
 
-    [HttpGet("Edit/{id}")]
-    public IActionResult Edit(int id)
+    [HttpPost("Edit/{id}")]
+    public IActionResult Edit(int id, [FromBody] News json)
     {
         return Ok($"News > Edit: {id}");
     }

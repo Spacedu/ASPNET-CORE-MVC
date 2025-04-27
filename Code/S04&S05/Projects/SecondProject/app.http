@@ -1,7 +1,18 @@
 # For more info on HTTP files go to https://aka.ms/vs/httpfile
 
 ### Add News
-POST https://localhost:7289/News/Add?author=Elias
+POST https://localhost:7289/News/Add
 Content-Type: application/x-www-form-urlencoded
+Authorization: Barer Token
 
 title=xyz-title&message=xyz-message&author=Jhon
+
+
+### Edit News
+POST https://localhost:7289/News/Edit/1
+Content-Type: application/json
+
+{
+    "title": "xyz123",
+    "message":"xyz-message"
+}
