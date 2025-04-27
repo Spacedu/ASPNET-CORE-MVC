@@ -50,4 +50,11 @@ public class ResultTypeController : Controller
         return File(fileInBytes, "application/pdf");
         return new FileContentResult(fileInBytes, "application/pdf");
     }
+
+    [Route("View")]
+    public IActionResult ViewResult()
+    {
+        return View("View2");
+        return new ViewResult { ContentType = "text/html", ViewName = "ViewResult" };
+    }
 }
