@@ -40,6 +40,7 @@ public class ResultTypeController : Controller
         return new PhysicalFileResult(@"C:\Users\elias\Downloads\article.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
     }
     [Route("File-Content")]
+    public IActionResult FileContent()
     {
         byte[] fileInBytes = System.IO.File.ReadAllBytes(@"C:\Users\elias\Downloads\articles.pdf");
         return new FileContentResult(fileInBytes, "application/pdf");
