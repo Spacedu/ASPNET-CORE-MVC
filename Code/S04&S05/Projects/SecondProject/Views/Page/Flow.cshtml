@@ -1,0 +1,31 @@
+﻿@using SecondProject.Models
+@model List<News>
+
+@if(Model is not null && Model.Count > 0)
+{
+	//algoritm
+	// Razor - Literal
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Message</th>
+		</tr>
+		@foreach (var news in Model)
+		{
+			<tr>
+				<td>@news.Title</td>
+				<td>@news.Author</td>
+				<td>@news.Message</td>
+			</tr>
+		}
+	</table>
+}
+else
+{
+	@:No register
+	@*
+		<text>elias.ribeiro.s@gmail.com</text>
+		<span>No register</span>
+	*@
+}

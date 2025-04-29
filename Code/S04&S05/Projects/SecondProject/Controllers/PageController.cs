@@ -47,5 +47,16 @@ namespace SecondProject.Controllers
         {
             return Ok($"{TempData.Peek("Company")} - {TempData["Founder"]} - {TempData["CEO"]}");
         }
+
+        public IActionResult Flow()
+        {
+            List<News> news = new List<News>();
+            /*news.Add(new News { Title = "News of now 1", Author = "Elias 1", Message = "Good day!" });
+            news.Add(new News { Title = "News of now 2", Author = "Elias 2", Message = "Good day!" });
+            news.Add(new News { Title = "News of now 3", Author = "Elias 3", Message = "Good day!" });
+            news.Add(new News { Title = "News of now 4", Author = "Elias 4", Message = "Good day!" });
+            */
+            return View(news);
+        }
     }
 }
