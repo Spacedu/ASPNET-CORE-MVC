@@ -1,7 +1,37 @@
 ﻿@model SecondProject.Models.News
 
-<h1>@Model.Title</h1>
+<h1>Model</h1>
+<h2>@Model.Title</h2>
 <h4>@Model.Author</h4>
 <p>
 	@Model.Message
+</p>
+<hr />
+<h1>ViewBag</h1>
+<p>
+	Company: @ViewBag.Company
+	<br />
+	Founders: @ViewBag.Founder
+	<br />
+	CEO: @ViewBag.CEO
+</p>
+
+<hr />
+<h1>ViewData</h1>
+<p>
+	Company: @ViewData["Company2"]
+	<br />
+	Founders: @ViewData["Founder2"]
+	<br />
+	CEO: @ViewData["CEO2"]
+</p>
+
+<hr />
+<h1>TempData</h1>
+<p>
+	Company: @TempData["Company"]
+	<br />
+	Founders: @TempData["Founder"]
+	<br />
+	CEO: @TempData["CEO"]
 </p>
