@@ -1,6 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 #region MVC - Service
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 #endregion
 
 var app = builder.Build();
