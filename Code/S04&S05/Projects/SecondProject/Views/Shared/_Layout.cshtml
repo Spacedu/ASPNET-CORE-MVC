@@ -1,14 +1,21 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head>
-		<title>SecondProject</title>
-		<!--CSS, JS, Meta-->
-	</head>
-	<body>
-		<!--Header-->
-		<!--Menu-->
-		<!--Body(Content)-->
+<head>
+	<title>SecondProject</title>
+	<!--CSS, JS, Meta-->
+</head>
+<body>
+	<!--Header-->
+	<!--Menu-->
+	<!--Body(Content)-->
+	<div id="#body">
 		@RenderBody()
-		<!--Footer-->
-	</body>
+	</div>
+	<!--Footer-->
+	<div id="#sectionAds">
+		@RenderSection("ads", required: false)
+	</div>
+
+	@RenderSection("scripts", required: false)
+</body>
 </html>
