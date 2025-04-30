@@ -1,11 +1,18 @@
 ﻿@{
 	Layout = "_Layout";
 }
-<nav style="background-color: limegreen">
-	<ul>
-		<li>Update profile</li>
-		<li>Update address</li>
-		<li>Change password</li>
-	</ul>
-</nav>
-@RenderBody()
+<div class="row">
+	<div class="col-4">
+		<nav style="background-color: limegreen">
+			<h3>ProfileLayout</h3>
+			<ul>
+				<li>Update profile</li>
+				<li>Update address</li>
+				<li>Change password</li>
+			</ul>
+		</nav>
+	</div>
+	<div class="col-8">
+		@RenderBody()
+	</div>
+</div>
