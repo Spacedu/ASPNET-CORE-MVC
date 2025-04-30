@@ -1,4 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@using System.IO;
+@using System.Text.Encodings.Web;
+@{
+	var htmlContent = await Html.PartialAsync("~/Views/Shared/_Header.cshtml");
+
+	string html;
+	using(var sw = new StringWriter())
+	{
+		htmlContent.WriteTo(sw, HtmlEncoder.Default);
+		html = sw.ToString();
+
+		html = html.Replace(" > ", " : ");
+	}
+}
+<!DOCTYPE html>
 <html>
 <head>
 	<title>@ViewBag.Title</title>
@@ -7,7 +21,11 @@
 </head>
 <body>
 	<div class="container-fluid" style="padding: 0px;">
+		@Html.Raw(html)
 		@await Html.PartialAsync("~/Views/Shared/_Header.cshtml")
+		@{
+			await Html.RenderPartialAsync("~/Views/Shared/_Header.cshtml");
+		}
 		<div>
 			<div class="row" style="background-color: #FFDAB9; padding: 12px;">
 				<div class="col-8">
