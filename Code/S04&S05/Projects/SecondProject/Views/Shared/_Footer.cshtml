@@ -1,3 +1,15 @@
-﻿<footer style="background-color: lightgreen;padding: 12px;">
-	Footer
+﻿@model string
+<footer style="background-color: lightgreen;padding: 12px;">
+	<div class="row">
+		<div class="col">
+			@Html.Raw(Model)
+		</div>
+		<div class="col">
+			@ViewData["Company"]
+		</div>
+	</div>
+	
+	@* Copyright *@
+	@* Company *@
+	@* Author *@
 </footer>

@@ -11,6 +11,9 @@
 
 		html = html.Replace(" > ", " : ");
 	}
+
+	string copyright = $"Copyright &copy; All right reserved - {DateTime.Now.Year}";
+	string company = "Microsoft";
 }
 <!DOCTYPE html>
 <html>
@@ -21,11 +24,13 @@
 </head>
 <body>
 	<div class="container-fluid" style="padding: 0px;">
-		@Html.Raw(html)
 		@await Html.PartialAsync("~/Views/Shared/_Header.cshtml")
-		@{
-			await Html.RenderPartialAsync("~/Views/Shared/_Header.cshtml");
-		}
+		@*
+			@Html.Raw(html)
+			@{
+				await Html.RenderPartialAsync("~/Views/Shared/_Header.cshtml");
+			}
+		*@
 		<div>
 			<div class="row" style="background-color: #FFDAB9; padding: 12px;">
 				<div class="col-8">
@@ -37,7 +42,12 @@
 			</div>
 		</div>
 		<!-- ASP.NET MVC - Enable Tag Helper -->
-		<partial name="~/Views/Shared/_Footer.cshtml" />
+		<partial name="~/Views/Shared/_Footer.cshtml" model="copyright" view-data="ViewData" view-data-Company="company" />
+
+		@*
+			await Html.PartialAsync("~/Views/Shared/_Footer.cshtml", copyright, new ViewDataDictionary(ViewData) { { "Company", "Microsoft" } });
+		*@
+
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 	@RenderSection("scripts", required: false)
