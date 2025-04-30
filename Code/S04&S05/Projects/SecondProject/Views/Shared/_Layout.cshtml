@@ -5,9 +5,9 @@
 	<!--CSS, JS, Meta-->
 </head>
 <body>
-	<!--Header-->
-	<!--Menu-->
-	<!--Body(Content)-->
+	<header style="background-color: lightgreen">
+		Header
+	</header>
 	<div id="#body">
 		@RenderBody()
 	</div>
@@ -15,7 +15,9 @@
 	<div id="#sectionAds">
 		@RenderSection("ads", required: false)
 	</div>
-
+	<footer style="background-color: lightgreen">
+		Footer
+	</footer>
 	@RenderSection("scripts", required: false)
 </body>
 </html>
