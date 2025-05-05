@@ -1,1 +1,9 @@
-﻿Ads - ViewComponent
+﻿@model List<SecondProject.Libraries.ViewComponents.Ads>
+<h1>Ads</h1>
+@foreach (var ad in Model)
+{
+	<div>
+		<h3>@ad.Title</h3>
+		@ad.Description
+	</div>
+}
